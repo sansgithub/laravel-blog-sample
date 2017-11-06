@@ -82,9 +82,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = $post = Post::find($id);
-        $post_title =$post->post_title;
-        $post
+        //
     }
 
     /**
