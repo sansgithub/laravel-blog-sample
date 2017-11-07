@@ -7,7 +7,7 @@
             <a href="/home">My Posts</a>
         </li>
         <li>
-            <a href="/post/create">Create a Post</a>
+            <a href="" id="create-modal" data-toggle="modal" data-target="#post-insert-modal">Create a Post</a>
         </li>
     </ul>
 </div>

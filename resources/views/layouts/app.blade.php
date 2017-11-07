@@ -88,14 +88,19 @@
             $('#post-insert-modal button[type=submit]').html("Edit Post");
         });
 
+        $('#create-modal').click(function(){
+            $('#post-insert-modal .modal-title').html("Add Post");
+            $('#post-insert-modal button[type=submit]').html("Add Post");
+        });
+
         var focusModalInput = function(){
             $('#post-insert-modal').on('show.bs.modal', function(){
                 $(this).find('[autofocus]').focus();
             });
         };
-        $('document').ready(function(){
-            focusModalInput();
-        });
+//        $('document').ready(function(){
+//            focusModalInput();
+//        });
     </script>
     </body>
 </html>

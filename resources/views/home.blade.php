@@ -15,18 +15,17 @@
         @foreach($posts as $post)
             
                 <hr>
-                <div class="post">
+                <div class="post-div">
                 <strong><u>{{ $post->post_title }}</u></strong>
                 <p>{{ $post->post_details }}</p>
+                    <div class="info">
+                        Posted by on {{$post->created_at}}
+                    </div>
                 <!--<div class="pull-right">-->
                     <a href="" id="edit-modal" data-toggle="modal" data-target="#post-insert-modal">Edit</a> |
-                    <div>
-        <form action="{{ route('post.destroy', $post->id) }}" method="POST">
-            {{ method_field('DELETE') }}
-            {{ csrf_field() }}
-            <input type="submit" value="Delete">
-        </form>
-    </div>|
+
+                    <a href="{{'#'}}" data-toggle="modal" data-target="#myModal" class="delete-model" data-id="{{ $post->id }}">
+                    Delete</a> |
                     <a href="">Comment</a>
                 </div>
            
@@ -61,5 +60,20 @@
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Are you sure?</h4>
+            </div>
+            <form method="post">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary" name="delete_dividend" value="foo">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection
