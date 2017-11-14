@@ -79,28 +79,19 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
+
         var token = '{{ Session::token() }}';
-        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-        if(token == CSRF_TOKEN){
-            console.log(true);
-        }
         var urlEdit = "{{ route('qedit') }}";
-        console.log(urlEdit);
+
         $('.post-div').find('.interaction').find('.edit').on('click',function(event){
             event.preventDefault();
             postTitleElement=event.target.parentNode.parentNode.childNodes[0];
-            console.log(postTitleElement);
             postDetailElement=event.target.parentNode.parentNode.childNodes[2];
-            console.log(postDetailElement);
             var postTitle = postTitleElement.textContent;
-            console.log(postTitle);
             var postDetail = postDetailElement.textContent;
-            console.log(postDetail);
             postId = event.target.parentNode.parentNode.dataset['postid'];
             $('#post_title').val(postTitle);
-            console.log($('#post_title').val(postTitle));
             $('#post_details').val(postDetail);
-            console.log($('#post_details').val(postDetail));
             $('#post-insert-modal').modal();
         });
 
@@ -117,12 +108,35 @@
                         }
                     })
                     .done(function (msg) {
-                        
                          $(postTitleElement).text(msg['new_title']);
-                         console.log($(postTitleElement).text(msg['new_title']));
                          $(postDetailElement).text(msg['new_details']);
                          $('#post-insert-modal').modal('hide');
                     });
+        });
+
+
+        $('.post-div').find('.interaction').find('.delete').on('click',function(event){
+
+            event.preventDefault();
+            deletePostId = event.target.parentNode.parentNode.dataset['postid']; 
+            var postTitleElement = event.target.parentNode.parentNode.childNodes[0];
+            var postTitle = postTitleElement.textContent;
+            $('#delete-post_title').val(postTitle);     
+            $('#delete-modal').modal();
+        });
+
+        $('.modal-footer').on('click','#modal-delete', function () {
+            $.ajax({
+                        type : 'DELETE',
+                        url: 'post/' + deletePostId,
+                        data: {
+                            _token : token                           
+                        },
+                        success : function (data) {    
+                            $('#delete-modal').modal('hide');
+                            $('#post-div-' + data['deletePostId']).remove();
+                        }
+                    });                    
         });
     </script>
     </body>

@@ -16,7 +16,6 @@ class QuestionController extends Controller
              'postDetail' => 'required'
          ]);
 
-        //$post = DB::table('posts')->find($request->id);
         $post = Post::find($request['postId']);
         $post->post_title = $request['postTitle'];;
         $post->post_details = $request['postDetail'];

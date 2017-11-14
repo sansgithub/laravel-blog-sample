@@ -11,12 +11,13 @@
             </div>
 @endif
         <div class="col-md-8">
+        {{ csrf_field() }}
         
         @foreach($posts as $post)
             
                 <hr>
 
-                <article class="post-div" data-postid="{{ $post->id }}">
+                <article class="post-div" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
                     <h2>{{ $post->post_title }}</h2>
                     <p>{{ $post->post_details }}</p>
                         <div class="info">
@@ -26,7 +27,7 @@
                     <a href="#" class="edit">Edit</a> |
                     <!-- id="edit-modal" data-target="#post-insert-modal"-->
 
-                    <a href='#' data-toggle="modal" data-target="#delete-modal" class="delete-model" data-id="{{ $post->id }}">
+                    <a href='#' class="delete">
                     Delete</a> |
 
                     <a href="">Comment</a>
@@ -78,10 +79,18 @@
             </div>
             <div class="modal-body">
                 <p>Are you sure?</p>
+                <form>
+                {{ csrf_field() }}
+                    <div class="form-group">
+                    <label for="delete-post_title">Post Title</label>
+                    <input type="name" name ="delete-post_title" class="form-control" id="delete-post_title" disabled>
+                    </div>    
+                {!! method_field('DELETE') !!}    
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" class="btn btn-danger" id="modal-delete">Delete</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
