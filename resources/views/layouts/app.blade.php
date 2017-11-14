@@ -15,7 +15,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -65,9 +65,6 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li>
-                                
-                            </li>
                         @endif
                     </ul>
                 </div>
@@ -81,26 +78,52 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script type="text/javascript">
-
-        $('#edit-modal').click(function(){
-            $('#post-insert-modal .modal-title').html("Edit Post");
-            $('#post-insert-modal button[type=submit]').html("Edit Post");
+    <script>
+        var token = '{{ Session::token() }}';
+        var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+        if(token == CSRF_TOKEN){
+            console.log(true);
+        }
+        var urlEdit = "{{ route('qedit') }}";
+        console.log(urlEdit);
+        $('.post-div').find('.interaction').find('.edit').on('click',function(event){
+            event.preventDefault();
+            postTitleElement=event.target.parentNode.parentNode.childNodes[0];
+            console.log(postTitleElement);
+            postDetailElement=event.target.parentNode.parentNode.childNodes[2];
+            console.log(postDetailElement);
+            var postTitle = postTitleElement.textContent;
+            console.log(postTitle);
+            var postDetail = postDetailElement.textContent;
+            console.log(postDetail);
+            postId = event.target.parentNode.parentNode.dataset['postid'];
+            $('#post_title').val(postTitle);
+            console.log($('#post_title').val(postTitle));
+            $('#post_details').val(postDetail);
+            console.log($('#post_details').val(postDetail));
+            $('#post-insert-modal').modal();
         });
 
-        $('#create-modal').click(function(){
-            $('#post-insert-modal .modal-title').html("Add Post");
-            $('#post-insert-modal button[type=submit]').html("Add Post");
+        $('#modal-save').on('click', function () {
+            $.ajax({
+                        method : 'POST',
+                        url: urlEdit, 
+                        data: {
+                            postTitle : $('#post_title').val(),
+                            postDetail : $('#post_details').val(),
+                            postId : postId,
+                            _token : token
+                            
+                        }
+                    })
+                    .done(function (msg) {
+                        
+                         $(postTitleElement).text(msg['new_title']);
+                         console.log($(postTitleElement).text(msg['new_title']));
+                         $(postDetailElement).text(msg['new_details']);
+                         $('#post-insert-modal').modal('hide');
+                    });
         });
-
-        var focusModalInput = function(){
-            $('#post-insert-modal').on('show.bs.modal', function(){
-                $(this).find('[autofocus]').focus();
-            });
-        };
-//        $('document').ready(function(){
-//            focusModalInput();
-//        });
     </script>
     </body>
 </html>

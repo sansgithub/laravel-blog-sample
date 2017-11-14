@@ -23,3 +23,5 @@ Route::resource('/comment', 'CommentController');
 
 Route::get('/home', 'HomeController@index')
        ->name('home');
+
+Route::post('/question', 'QuestionController@postQuestion')->name('qedit');

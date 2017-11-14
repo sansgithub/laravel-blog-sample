@@ -82,7 +82,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+      //
     }
 
     /**
@@ -94,7 +94,21 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        /*$this->validate($request,[
+            'post_title' => 'min:20|max:50|required',
+            'post_details' => 'min:5|required'
+        ]);
+
+        $post = DB::table('post')->find($request->id);
+        $post_title = $request->post_title;
+        $post_details = $request->post_details;
+        $post->post_title = $post_title;
+        $post->post_details = $post_details;
+
+        $post->update();
+        return response()->json(['new_title' => $post->post_title, 
+            'new_detail'=> $post->post_details], 200);*/
+
     }
 
     /**
@@ -105,11 +119,8 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        $post = Post::find($id);
+        $post = DB::table('post')->find($id);
         $post->delete();
-        
-        return redirect()->route('home')->with([
-            'message' => 'Successfully deleted the post!'
-        ]);
+        return redirect()->route('home')->with('message', 'Successfully deleted');
     }
 }
