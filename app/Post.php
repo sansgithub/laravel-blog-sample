@@ -10,11 +10,11 @@ class Post extends Model
 {
     public function user()
     {
-    	return $this->belongsTo('User');
+    	return $this->belongsTo('App\User');
     }
 
     public function comments()
     {
-    	return $this->hasMany('Comment', 'post_id', 'id');
+    	return $this->hasMany('App\Comment');
     }
 }

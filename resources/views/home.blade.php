@@ -7,7 +7,7 @@
         @endsection
         @if (session('message'))
            <div class="alert alert-success col-md-4 col-md-offset-4 message">
-                <button type="button" class="close" data-dismiss="alert">X</button>
+                <button type="button" class="close" data-dismiss="alert"><span><i class="fa fa-close"></i></span></button>
                 {{ session('message') }}
             </div>
         @endif
@@ -22,16 +22,17 @@
                     <h2>{{ $post->post_title }}</h2>
                     <p>{{ $post->post_details }}</p>
                         <div class="info">
-                            Posted by {{ $post->user_id }} on {{$post->created_at}}
+                            Posted by {{ $post->id }} on {{$post->created_at}}
                         </div>
                     <div class="interaction">
-                    <a href="#" class="edit">Edit</a> |
+                        <span><i class="fa fa-edit"></i></span> <a href="#" class="edit">Edit</a> |
                     <!-- id="edit-modal" data-target="#post-insert-modal"-->
 
-                    <a href='#' class="delete">
+                        <span><i class="fa fa-trash"></i></span> <a href='#' class="delete">
                     Delete</a> |
 
-                    <a href="">Comment</a>
+                        <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>
+                        <textarea id="show" style="display:none" class="hide"></textarea>
                     </div>
                 </article>
 

@@ -12,7 +12,24 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+    <style>
+        ul li{
+            list-style: none;
+        }
+        a {
+            text-decoration: none !important;
+            color: darkorange;
+        }
+        a:hover{
+            color : darkgreen;
+            font-size: 1.5em;
+        }
+        body{
+            background-color: transparent;
+        }
+    </style>
 </head>
 <body>
     <div id="app">
@@ -107,7 +124,6 @@
                             postDetail : $('#post_details').val(),
                             postId : postId,
                             _token : token
-                            
                         }
                     })
                     .done(function (msg) {
@@ -146,6 +162,19 @@
                             
                         }
                     });                    
+        });
+
+        $('.post-div').find('.interaction').find('.comment').on('click',function(event) {
+            event.preventDefault();
+            commentOnId = event.target.parentNode.parentNode.dataset['postid'];
+            var selected = document.getElementById('show');
+            if(selected.className == 'hide'){
+                selected.style.display = 'block';
+                selected.className = 'show';
+            }else{
+                selected.style.display = 'none';
+                selected.className =  'hide';
+            }
         });
     </script>
     </body>

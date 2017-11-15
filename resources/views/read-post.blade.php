@@ -18,6 +18,9 @@
                 <div>
                 <strong><u>{{ $post->post_title }}</u></strong>
                 <p>{{ $post->post_details }}</p>
+                    <div class="info">
+                        Posted by {{ $post->id }} on {{$post->created_at}}
+                    </div>
                 <!--<div class="pull-right">-->
                     <a href="">Comment</a>
                 </div>

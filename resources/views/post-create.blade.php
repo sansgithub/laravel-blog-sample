@@ -10,7 +10,7 @@
     @if ($errors->any())
             @foreach ($errors->all() as $error)
             <div class="alert alert-danger">
-                  <button type="button" class="close" data-dismiss="alert">X</button>
+                  <button type="button" class="close" data-dismiss="alert"><span><i class="fa fa-close"></i></span></button>
                 {{ $error }}
             </div>
             @endforeach
