@@ -6,16 +6,17 @@
             @include('layouts.sidebar')
         @endsection
         @if (session('message'))
-           <div class="alert alert-success col-md-4 col-md-offset-4">
+           <div class="alert alert-success col-md-4 col-md-offset-4 message">
+                <button type="button" class="close" data-dismiss="alert">X</button>
                 {{ session('message') }}
             </div>
-@endif
+        @endif
         <div class="col-md-8">
         {{ csrf_field() }}
         
         @foreach($posts as $post)
             
-                <hr>
+                <hr id="post-hr-{{ $post->id}}">
 
                 <article class="post-div" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
                     <h2>{{ $post->post_title }}</h2>

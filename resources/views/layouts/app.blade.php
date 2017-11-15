@@ -114,6 +114,7 @@
                          $(postTitleElement).text(msg['new_title']);
                          $(postDetailElement).text(msg['new_details']);
                          $('#post-insert-modal').modal('hide');
+                         toastr.success('Successfully edited Post!', 'Success Alert', {timeOut: 5000});
                     });
         });
 
@@ -137,15 +138,15 @@
                         },
                         success : function (data) { 
                             $('#delete-modal').modal('hide');
-                            
-                            var elementsToRemove = $('#post-div-' + data['id']).remove();
-                            
-                             toastr.success('Successfully deleted Post!', 'Success Alert', {timeOut: 5000});
+                            articleToRemove = $('#post-div-' + data['id']);
+                            articleToRemove.remove();
+                            hrToRemove = $('#post-hr-' + data['id']);
+                            hrToRemove.remove();         
+                            toastr.success('Successfully deleted Post!', 'Success Alert', {timeOut: 5000});
                             
                         }
                     });                    
         });
-        
     </script>
     </body>
 </html>
