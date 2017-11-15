@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 </head>
 <body>
     <div id="app">
@@ -78,6 +79,8 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
     <script>
 
         var token = '{{ Session::token() }}';
@@ -132,12 +135,17 @@
                         data: {
                             _token : token                           
                         },
-                        success : function (data) {    
+                        success : function (data) { 
                             $('#delete-modal').modal('hide');
-                            $('#post-div-' + data['deletePostId']).remove();
+                            
+                            var elementsToRemove = $('#post-div-' + data['id']).remove();
+                            
+                             toastr.success('Successfully deleted Post!', 'Success Alert', {timeOut: 5000});
+                            
                         }
                     });                    
         });
+        
     </script>
     </body>
 </html>
