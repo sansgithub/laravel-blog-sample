@@ -16,9 +16,9 @@
         
         @foreach($posts as $post)
             
-                <hr id="post-hr-{{ $post->id}}">
+                <!--<hr id="post-hr-{{ $post->id}}">-->
 
-                <article class="post-div" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
+                <article class="post-div well" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
                     <h2>{{ $post->post_title }}</h2>
                     <p>{{ $post->post_details }}</p>
                         <div class="info">
@@ -32,7 +32,11 @@
                     Delete</a> |
 
                         <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>
-                        <textarea id="show" style="display:none" class="hide"></textarea>
+                        <form id="show" class="hide">
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                        </form>
                     </div>
                 </article>
 
