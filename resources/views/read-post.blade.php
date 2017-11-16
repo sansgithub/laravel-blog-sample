@@ -17,7 +17,7 @@
                     <h2>{{ $post->post_title }}</h2>
                     <p>{{ $post->post_details }}</p>
                     <div class="info">
-                        Posted by {{ $post->id }} on {{$post->created_at}}
+                        Posted by {{ $post->user->name }} on {{$post->created_at}}
                     </div>
                     <div class="interaction">
                         <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>

@@ -18,9 +18,9 @@ class PostController extends Controller
     public function index()
     {
         $id = Auth::user()->id;
-        $posts = DB::table('posts')
-                ->where('user_id', '!=' , $id)
+        $posts = Post::with('user')->where('user_id', '!=' , $id)
                 ->get();
+        //$posts = Post::all();
         return view('read-post',['posts' => $posts]);
     }
 

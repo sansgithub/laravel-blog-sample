@@ -15,6 +15,15 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <style>
+        .fa-plus{
+            color: #4cae4c;
+        }
+        .fa-book{
+            color: #b6a338;
+        }
+        .fa-male{
+            color: #f7e1b5;
+        }
         #side-bar{
             background-color: transparent;
             height: 250px;
@@ -43,7 +52,7 @@
         }
         a:hover{
             color : darkgreen;
-            font-size: 1.5em;
+            font-size: 16px;
         }
         body{
             background-color: transparent;
@@ -85,7 +94,7 @@
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <span><i class="fa fa-user"></i></span> {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
