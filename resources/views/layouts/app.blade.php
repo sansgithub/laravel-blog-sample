@@ -195,11 +195,21 @@
         $('.post-div').find('.interaction').find('.comment').on('click',function(event) {
             event.preventDefault();
             commentOnId = event.target.parentNode.parentNode.dataset['postid'];
-            var selected = document.getElementById('show');
+            selected = document.getElementById('show');
             if(selected.className == 'hide'){
                 selected.style.display = 'block';
                 selected.className = 'show';
+                var commentDetailElement = selected.children[0].childNodes[0];
+                var commentDetail = commentDetailElement.textContent;
+                $('#comment_details').val(commentDetail);
             }else{
+                selected.style.display = 'none';
+                selected.className =  'hide';
+            }
+        });
+        $('#comment_details').keypress(function (e){
+            if(e.keyCode == 13){
+                console.log($('#comment_details').val());
                 selected.style.display = 'none';
                 selected.className =  'hide';
             }

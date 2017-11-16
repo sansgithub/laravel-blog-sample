@@ -12,12 +12,8 @@
             </div>
         @endif
         <div class="col-md-8">
-        {{ csrf_field() }}
-        
+            {{ csrf_field() }}
         @foreach($posts as $post)
-            
-                <!--<hr id="post-hr-{{ $post->id}}">-->
-
                 <article class="post-div well" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
                     <h2>{{ $post->post_title }}</h2>
                     <p>{{ $post->post_details }}</p>
@@ -26,15 +22,12 @@
                         </div>
                     <div class="interaction">
                         <span><i class="fa fa-edit"></i></span> <a href="#" class="edit">Edit</a> |
-                    <!-- id="edit-modal" data-target="#post-insert-modal"-->
-
                         <span><i class="fa fa-trash"></i></span> <a href='#' class="delete">
                     Delete</a> |
-
                         <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>
                         <form id="show" class="hide">
                         <div class="form-group">
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea id="comment_details" class="form-control" name="comment_details" rows="3"></textarea>
                         </div>
                         </form>
                     </div>
