@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Post;
 use App\User;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -20,8 +21,8 @@ class PostController extends Controller
         $id = Auth::user()->id;
         $posts = Post::with('user')->where('user_id', '!=' , $id)
                 ->get();
-        //$posts = Post::all();
-        return view('read-post',['posts' => $posts]);
+        $comments = Comment::all();
+        return view('read-post')->withPosts($posts)->withComments($comments);
     }
 
     /**
@@ -55,6 +56,7 @@ class PostController extends Controller
         $post->post_title = $post_title;
         $post->post_details = $post_details;
         $post->user_id = $user_id;
+        $post->slug = str_slug($post->post_title);
         $post->save();
 
         return redirect()->route('home')
@@ -69,9 +71,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+        //$comments = Comment::all();
+        return view('post', compact('post'));
+        //return view('post')->withPost($post)->withComments($comments);
     }
 
     /**

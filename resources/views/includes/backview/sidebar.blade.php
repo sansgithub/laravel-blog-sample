@@ -7,7 +7,6 @@
             <a href="/home"><span><i class="fa fa-male"></i></span> My Posts</a>
         </li>
         <li>
-
             <a href="/post/create" id="post-question"><span><i class="fa fa-plus"></i></span> Post a Question</a>
         </li>
     </ul>

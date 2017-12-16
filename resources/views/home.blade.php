@@ -1,22 +1,22 @@
-@extends('layouts.app')
+@extends('layouts.backview.master')
 @section('main-content')
 <div class="container">
     <div class="row">
-        @section('sidebar')
-            @include('layouts.sidebar')
-        @endsection
         @if (session('message'))
            <div class="alert alert-success col-md-4 col-md-offset-4 message">
                 <button type="button" class="close" data-dismiss="alert"><span><i class="fa fa-close"></i></span></button>
                 {{ session('message') }}
             </div>
         @endif
-        <div class="col-md-8">
+        <div class="col-md-8 col-md-offset-1 col-lg-8 col-lg-offset-1">
             {{ csrf_field() }}
+            @if(count($posts) == 0)
+                <p class="text-success text-sm">Posting for first time? </br><a href="/post/create" class="btn btn-success btn-xs">Post</a></p>
+            @endif
         @foreach($posts as $post)
                 <article class="post-div well" id="post-div-{{ $post->id }}" data-postid="{{ $post->id }}">
                     <h2>{{ $post->post_title }}</h2>
-                    <p>{{ $post->post_details }}</p>
+                    <p align="justify">{{ $post->post_details }}</p>
                         <div class="info">
                             Posted by {{ $post->user->name }} on {{$post->created_at}}
                         </div>
@@ -29,10 +29,22 @@
                         <div class="form-group">
                             <textarea id="comment_details" class="form-control" name="comment_details" rows="3"></textarea>
                         </div>
+                            <input type="hidden" id="token" value="{{ csrf_token() }}">
                         </form>
                     </div>
+                    <div id="comments"> 
+                    @foreach($comments as $comment)
+                        @if($comment->post_id == $post->id)
+                            <strong>
+                            
+                            {{ $comment->user->name }}
+                            
+                            </strong> commented</br>
+                            <p>{{ $comment->comment_details }}</p>
+                        @endif
+                    @endforeach
+                    </div>
                 </article>
-
         @endforeach
         </div>
     </div>

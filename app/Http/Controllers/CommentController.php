@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+
 use App\Comment;
 
 class CommentController extends Controller
@@ -35,7 +36,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
+        /*$this->validate($request, [
             'comment_details' => 'required'
         ]);
 
@@ -45,7 +46,7 @@ class CommentController extends Controller
         $comment->comment_details = $comment_details;
         $comment->save();
 
-        return response()->json($comment);
+        return response()->json($comment);*/
     }
 
     /**

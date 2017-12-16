@@ -1,10 +1,5 @@
-@extends('layouts.app')
-
-@section('main-content')   
-    @section('sidebar')
-        @include('layouts.sidebar')
-    @endsection
-    
+@extends('layouts.backview.master')
+@section('main-content')      
     <div class="col-md-6 col-md-offset-2">
     <h1>Create a post</h1>
     @if ($errors->any())

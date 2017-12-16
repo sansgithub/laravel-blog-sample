@@ -18,13 +18,13 @@ class CreatePostsTable extends Migration
             $table->string('post_title', 50);
             $table->timestamps();
             $table->text('post_details');
-            
+            $table->string('slug')->unique();
             $table->integer('user_id')
                   ->unsigned();
-            
             $table->foreign('user_id')
                   ->references('id')
-                  ->on('users');
+                  ->on('users')
+                  ->onDelete('cascade');
         });
     }
 

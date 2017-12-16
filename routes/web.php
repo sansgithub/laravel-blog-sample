@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'DefaultController@index');
 
 Auth::routes();
 
@@ -25,3 +23,5 @@ Route::get('/home', 'HomeController@index')
        ->name('home');
 
 Route::post('/question', 'QuestionController@postQuestion')->name('qedit');
+
+Route::post('/comment/{id}', 'QuestionController@postCommentStore')->name('comment');
