@@ -15,45 +15,10 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <style>
-        .fa-plus{
-            color: #4cae4c;
-        }
-        .fa-book{
-            color: #b6a338;
-        }
-        .fa-male{
-            color: #f7e1b5;
-        }
-        #side-bar{
-            background-color: transparent;
-            height: 250px;
-        }
-        #side-bar li {
-            height:50px;
-        }
-        #side-bar li a{
-            margin-top: 0;
-            background-color: black;
-            color: whitesmoke;
-            display: block;
-            padding: 10px 10px 10px 10px;
-        }
-        #show{
-            margin-top : 15px;
-            margin-left : 50px;
-            width : 450px;
-        }
         ul li{
             list-style: none;
         }
-        a {
-            text-decoration: none !important;
-            color: darkorange;
-        }
-        a:hover{
-            color : darkgreen;
-            font-size: 16px;
-        }
+        
         body{
             background-color: transparent;
         }

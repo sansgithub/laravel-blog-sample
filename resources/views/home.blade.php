@@ -25,9 +25,10 @@
                         <span><i class="fa fa-trash"></i></span> <a href='#' class="delete">
                     Delete</a> |
                         <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>
-                        <form id="show" class="hide">
+                        <form id="show-{{ $post->id}}" class="hide">
                         <div class="form-group">
-                            <textarea id="comment_details" class="form-control" name="comment_details" rows="3"></textarea>
+                            <textarea id="comment_details" class="form-control" name="comment_details" rows="3"></textarea></br>
+                            <button type="button" class="btn btn-success" onclick="postComment()">Post Comment</button>
                         </div>
                             <input type="hidden" id="token" value="{{ csrf_token() }}">
                         </form>

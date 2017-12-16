@@ -19,10 +19,10 @@
                     </div>
                     <div class="interaction">
                         <span><i class="fa fa-comment"></i></span> <a href="#" class="comment">Comment</a>
-                        <form id="show" class="hide">
+                        <form id="show-{{ $post->id }}" class="hide">
                             <div class="form-group">
-                                <textarea class="form-control" rows="3" id="comment_details"></textarea>
-                                <button type="button" onclick="postComment()">Submit test button</button>
+                                <textarea class="form-control" rows="3" id="comment_details"></textarea></br>
+                                <button type="button" class="btn btn-success" onclick="postComment()">Post Comment</button>
                             </div>
                         </form>
                     </div>

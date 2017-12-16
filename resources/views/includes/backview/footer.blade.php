@@ -74,8 +74,7 @@
         $('.post-div').find('.interaction').find('.comment').on('click',function(event) {
             event.preventDefault();
             commentOnId = event.target.parentNode.parentNode.dataset['postid'];
-            console.log(commentOnId);
-            selected = document.getElementById('show');
+            selected = document.getElementById('show-'+commentOnId);
             if(selected.className == 'hide'){
                 selected.style.display = 'block';
                 selected.className = 'show';
