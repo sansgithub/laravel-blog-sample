@@ -1,7 +1,9 @@
 @extends('layouts.backview.master')
-@section('main-content')      
-    <div class="col-md-6 col-md-offset-2">
-    <h1>Create a post</h1>
+@section('main-content')
+<div class="container content-container"> 
+<div class="row">     
+    <div class="col-md-5 col-md-offset-4">
+    <h1>Create post</h1>
     @if ($errors->any())
             @foreach ($errors->all() as $error)
             <div class="alert alert-danger">
@@ -22,5 +24,7 @@
       <input type="submit" class="btn btn-primary">
       <input type="hidden" name="_token" value="{{ Session::token() }}">
     </form>
+    </div>
+    </div>
     </div>
 @endsection

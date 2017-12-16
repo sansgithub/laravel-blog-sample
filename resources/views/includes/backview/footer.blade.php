@@ -83,29 +83,10 @@
                 $('#comment_details').val(commentDetail);
             }
         });
-        $('#comment_details').keypress(function (e){
-            if(e.keyCode == 13) {
-                $.ajax({
-                    type: 'POST',
-                    url: 'comment/'+commentOnId,
-                    data: {
-                        _token: token,
-                        comment_details: $('#comment_details').val(),
-                        userId : userId,
-                        commentOnId: commentOnId
-                    },
-                    success: function (data) {
-                        selected.style.display = 'none';
-                        selected.className = 'hide';
-                        toastr.success('Your comment has been posted!', 'Success Alert', {timeOut: 5000});
-                    }
-                });
-            }
-        });
+        
 
         function postComment()
         {
-            console.log(commentOnId);
                 $.ajax({
                     type: 'POST',
                     url: 'comment/'+commentOnId,

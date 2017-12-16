@@ -24,7 +24,7 @@ class DefaultController extends Controller
     public function index()
     {        
         $posts = Post::all();
-        $comments = Comment::all();
-        return view('welcome')->withPosts($posts)->withComments($comments);
+        //$comments = Comment::all();
+        return view('welcome')->withPosts($posts);
     }
 }

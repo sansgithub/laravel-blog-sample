@@ -24,7 +24,17 @@
         .fa-male{
             color: #f7e1b5;
         }
+        .info{
+            color:#aaa;
+            font-style: italic;
+        }
+        .comments{
+            padding-left:10px; 
+            border-left:3px solid #a21b24;
+            margin: 10px 0px 20px 30px;
+        }
         #side-bar{
+            position: fixed;
             background-color: transparent;
             height: 250px;
         }
@@ -54,6 +64,9 @@
             color : darkgreen;
             font-size: 16px;
         }
+        .content-container{
+            margin-top: 70px;
+        }
         body{
             background-color: transparent;
         }
@@ -61,7 +74,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 

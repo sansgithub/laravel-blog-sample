@@ -15,18 +15,35 @@
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     <style>
-        ul li{
-            list-style: none;
-        }
-        
-        body{
-            background-color: transparent;
-        }
+    body{
+        color: black;
+    }
+    article a {
+        color: brown;
+    }
+    .comment{
+        padding-left:10px; 
+        border-left:3px solid #a21b24;
+        margin: 10px 0px 20px 30px;
+    }
+    .info{
+        color:#aaa;
+        font-style: italic;
+    }
+    ul li{
+        list-style: none;
+    }
+    body{
+        background-color: transparent;
+    }
+    .content-container{
+        margin-top: 70px;
+    }
     </style>
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
